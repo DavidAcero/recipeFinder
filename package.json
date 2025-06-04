@@ -1,7 +1,8 @@
 {
   "name": "recipe-finder",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "homepage": "https://DavidAcero.github.io/recipeFinder",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
