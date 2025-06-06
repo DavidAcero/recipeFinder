@@ -18,19 +18,6 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install
 
-      - name: Start the application
-        run: npm start &
-        continue-on-error: true
-
-      - name: Wait for the server to be ready
-        run: |
-          echo "Waiting for localhost to be ready..."
-          for i in {1..30}; do
-            curl --silent --head http://localhost:3000 && break
-            echo -n "."
-            sleep 2
-          done
-
       - name: Run Playwright tests
         run: npx playwright test --reporter=list
 
