@@ -32,7 +32,7 @@ jobs:
           done
 
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --reporter=list
 
       - name: Stop the application
-        run: kill $(jobs -p)
+        run: pkill -f "npm start"
