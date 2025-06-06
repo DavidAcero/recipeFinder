@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - '**'
-  pull_request:
-    branches:
-      - '**'
-
 
 jobs:
   build:
@@ -15,9 +11,25 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Install Repository
         run: npm install
-      # - name: Start the application
-      #   run: npm start &   
-      # - name: Run tests
-      #   run: npm test
+
+      - name: Start the application
+        run: npm start &
+        continue-on-error: true
+
+      - name: Wait for the server to be ready
+        run: |
+          echo "Waiting for localhost to be ready..."
+          for i in {1..30}; do
+            curl --silent --head http://localhost:3000 && break
+            echo -n "."
+            sleep 2
+          done
+
+      - name: Run Playwright tests
+        run: npx playwright test
+
+      - name: Stop the application
+        run: kill $(jobs -p)
