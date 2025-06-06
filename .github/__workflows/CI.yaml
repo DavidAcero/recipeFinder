@@ -17,11 +17,43 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # * * * * * * * * * * * * * * * * * * 
+      # * Enable for Playwirght execution *
+      # * * * * * * * * * * * * * * * * * * 
+      # - name: Install dependencies
+      #   run: npm install 
+
+      # - name: Install Playwright browsers
+      #   run: npx playwright install
+
+      # - name: Run Playwright tests
+      #   run: npx playwright test --reporter=list
+
+      # * * * * * * * * * * * * * * * * * * 
+      # * Enable for CodeceptJS execution *
+      # * * * * * * * * * * * * * * * * * * 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Install Playwright browsers
         run: npx playwright install
 
-      - name: Run Playwright tests
-        run: npx playwright test --reporter=github
+      - name: Start the application
+        run: npm start &
+        continue-on-error: true
+
+      - name: Wait for the server to be ready
+        run: |
+          echo "Waiting for localhost to be ready..."
+          for i in {1..30}; do
+            curl --silent --head http://localhost:3000 && break
+            echo -n "."
+            sleep 2
+          done
+
+      - name: Run CodeceptJS tests
+        run: HEADLESS=true npx codeceptjs run
+        # run: HEADLESS=true npx codeceptjs run --steps --verbose
+
+      - name: Stop the application
+        run: pkill -f "npm start"
