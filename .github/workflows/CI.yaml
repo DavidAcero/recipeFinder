@@ -9,17 +9,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Install dependencies
         run: npm install
+        env:
+          FORCE_COLOR: 1 
 
       - name: Install Playwright browsers
         run: npx playwright install
+        env:
+          FORCE_COLOR: 1
 
       - name: Run Playwright tests
         run: npx playwright test --reporter=list
-
-      - name: Stop the application
-        run: pkill -f "npm start"
+        env:
+          FORCE_COLOR: 1
