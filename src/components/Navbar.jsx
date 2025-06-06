@@ -7,7 +7,7 @@ const Navbar = () => {
       <div id='logo'>
       <h2>Recipe Finder App</h2>
       </div>
-      <Link to={"/"}>
+      <Link to={"/"} locatorLabel="Return to Home">
 
         Home</Link>
     </nav>
