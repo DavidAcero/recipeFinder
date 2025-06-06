@@ -14,6 +14,7 @@ Feature('Breakfast Category Cards');
 Scenario('Verify breakfast category cards', ({ I }) => {
   I.amOnPage('http://localhost:3000/recipeFinder');
   I.seeInTitle('Recipe Finder App');
+  I.waitForElement('#Breakfast', 10);
   I.click('#Breakfast');
   I.seeInCurrentUrl('/recipeFinder/category/Breakfast');
 
