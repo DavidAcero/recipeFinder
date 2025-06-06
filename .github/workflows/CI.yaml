@@ -52,7 +52,7 @@ jobs:
           done
 
       - name: Run CodeceptJS tests
-        run: npx codeceptjs run --steps
+        run: HEADLESS=true npx codeceptjs run --steps --verbose
 
       - name: Stop the application
         run: pkill -f "npm start"
