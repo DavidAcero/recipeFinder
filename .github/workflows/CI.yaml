@@ -6,7 +6,7 @@ on:
       - '**'
 
 jobs:
-  build:
+  Tests:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Node.js
@@ -28,6 +28,6 @@ jobs:
           FORCE_COLOR: 1
 
       - name: Run Playwright tests
-        run: npx playwright test --reporter=list
+        run: npx playwright test --reporter=github
         env:
           FORCE_COLOR: 1
