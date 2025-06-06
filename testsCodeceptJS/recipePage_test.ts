@@ -1,0 +1,14 @@
+const { I } = inject();
+
+Feature('Recipe Card');
+
+Scenario('Verify recipe card details', ({ I }) => {
+  I.amOnPage('http://localhost:3000/recipeFinder');
+  I.seeInTitle('Recipe Finder App');
+  I.click('#Breakfast');
+  I.seeInCurrentUrl('/recipeFinder/category/Breakfast');
+  I.waitForText('Smoked Haddock Kedgeree', 5);
+  I.click('#Smoked\\ Haddock\\ Kedgeree');
+  I.seeInCurrentUrl('/recipeFinder/meal/52964');
+  I.waitForElement('h2:has-text("Smoked Haddock Kedgeree")', 5);
+});
