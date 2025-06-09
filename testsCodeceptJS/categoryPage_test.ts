@@ -20,6 +20,7 @@ Scenario('Verify breakfast category cards', ({ I }) => {
 
   BREAKFAST_OPTION.forEach((title, index) => {
     const FOOD_BOX_SELECTOR = `.meal-box:nth-of-type(${index + 1})`;
+    // const FOOD_BOX_SELECTOR = `.meal-box-card:nth-of-type(${index + 1})`;
     // Hover by selector
     I.moveCursorTo(FOOD_BOX_SELECTOR);
     I.waitForText(title, 5);

@@ -16,6 +16,8 @@ heal.addRecipe('ai', {
     'uncheckOption', 
     'doubleClick',
     'see',
+    'waitForElement',
+    'moveCursorTo',
   ],
   fn: async args => {
     return ai.healFailedStep(args)
