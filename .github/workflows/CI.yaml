@@ -54,6 +54,7 @@ jobs:
       - name: Run CodeceptJS tests
         env:
           GROQ_API_KEY: ${{ secrets.SELF_HEAL_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.SELF_HEAL_API_KEY_OPEN_AI }}
         run: HEADLESS=true npx codeceptjs run --ai
         # run: HEADLESS=true npx codeceptjs run --steps --verbose
 
