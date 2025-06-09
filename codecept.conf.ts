@@ -20,6 +20,9 @@ export const config: CodeceptJS.MainConfig = {
   },
   ai: {
   request: async messages => {
+     /* * * * * * * * *
+      *  GROQ Example *
+      * * * * * * * * */
       const Groq = require('groq-sdk')
 
       const client = new Groq({
@@ -34,16 +37,28 @@ export const config: CodeceptJS.MainConfig = {
       console.log('\n* * * * * * * *\n* Token Usage *\n* * * * * * * *\n', chatCompletion.usage);
       console.log('\n* * * * * * * *\n* AI Response *\n* * * * * * * *\n', chatCompletion.choices[0]?.message);
       return chatCompletion.choices[0]?.message?.content || ''
+
+     /* * * * * * * * * *
+      *  OpenAI Example *
+      * * * * * * * * * *
+      const OpenAI = require('openai');
+      const openai = new OpenAI({ apiKey: process.env['OPENAI_API_KEY'] });
+
+      const completion = await openai.chat.completions.create({
+          model: 'gpt-4o',
+          messages,
+      });
+
+      console.log('\n* * * * * * * * * * *\n* Prompt sent to AI *\n* * * * * * * * * * *\n\n', messages[0].content);
+      console.log('\n* * * * * * * *\n* Token Usage *\n* * * * * * * *\n', completion.usage);
+      console.log('\n* * * * * * * *\n* AI Response *\n* * * * * * * *\n', completion.choices[0]?.message);
+
+      return completion?.choices[0]?.message?.content;
+      */
     }
   },
   plugins: {
     heal: {  enabled: true, healLimit: 20 },
-    // analyze: {
-    //   enabled: true,
-    //   analyze: 3,
-    //   clusterize: 5,
-    //   vision: false
-    // }
   },
   include: {
     I: './steps_file'
