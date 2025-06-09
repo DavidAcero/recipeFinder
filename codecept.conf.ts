@@ -23,7 +23,7 @@ export const config: CodeceptJS.MainConfig = {
       const Groq = require('groq-sdk')
 
       const client = new Groq({
-        apiKey: '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', // This is the default and can be omitted
+        apiKey: process.env.GROQ_API_KEY, // This is the default and can be omitted
       });
 
       const chatCompletion = await client.chat.completions.create({
