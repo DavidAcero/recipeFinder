@@ -19,10 +19,11 @@ Scenario('Verify breakfast category cards', ({ I }) => {
   I.seeInCurrentUrl('/recipeFinder/category/Breakfast');
 
   BREAKFAST_OPTION.forEach((title, index) => {
-    const FOOD_BOX_SELECTOR = `.meal-box:nth-of-type(${index + 1})`;
-    // const FOOD_BOX_SELECTOR = `.meal-box-card:nth-of-type(${index + 1})`;
+    const FOOD_BOX_SELECTOR = `.meal-box-card:nth-of-type(${index + 1})`;
     // Hover by selector
     I.moveCursorTo(FOOD_BOX_SELECTOR);
     I.waitForText(title, 5);
   });
+  I.click(`.meal-box:nth-of-type(3)`);
+  I.waitForText('Heat the flat grill plate over a low heat', 5);
 });

@@ -23,7 +23,7 @@ export const config: CodeceptJS.MainConfig = {
       const Groq = require('groq-sdk')
 
       const client = new Groq({
-        apiKey: process.env.GROQ_API_KEY, // This is the default and can be omitted
+        apiKey: process.env.GROQ_API_KEY,
       });
 
       const chatCompletion = await client.chat.completions.create({
@@ -37,7 +37,13 @@ export const config: CodeceptJS.MainConfig = {
     }
   },
   plugins: {
-    heal: {  enabled: true }
+    heal: {  enabled: true, healLimit: 20 },
+    // analyze: {
+    //   enabled: true,
+    //   analyze: 3,
+    //   clusterize: 5,
+    //   vision: false
+    // }
   },
   include: {
     I: './steps_file'
