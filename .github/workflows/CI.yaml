@@ -52,7 +52,9 @@ jobs:
           done
 
       - name: Run CodeceptJS tests
-        run: HEADLESS=true npx codeceptjs run
+        env:
+          GROQ_API_KEY: ${{ secrets.SELF_HEAL_API_KEY }}
+        run: HEADLESS=true npx codeceptjs run --ai
         # run: HEADLESS=true npx codeceptjs run --steps --verbose
 
       - name: Stop the application
