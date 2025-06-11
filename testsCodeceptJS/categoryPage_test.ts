@@ -9,7 +9,7 @@ const BREAKFAST_OPTION = [
   'Smoked Haddock Kedgeree'
 ];
 
-Feature('Breakfast Category Cards');
+Feature('Category Page Tests');
 
 Scenario('Verify breakfast category cards', ({ I }) => {
   I.amOnPage('http://localhost:3000/recipeFinder');
