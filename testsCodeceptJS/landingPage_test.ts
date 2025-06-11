@@ -2,7 +2,7 @@ let cardTitles = [
   'Beef', 'Chicken', 'Dessert', 'Pasta', 'Pork', 'Seafood', 'Side', 'Starter', 'Vegan', 'Vegetarian', 'Breakfast'
 ];
 
-Feature('Initial Cards');
+Feature('Landing Page Tests');
 
 Scenario('Verify initial cards', ({ I }) => {
   I.amOnPage('http://localhost:3000/recipeFinder');
@@ -22,4 +22,20 @@ Scenario('Verify initial cards', ({ I }) => {
   I.see('Chicken Handi');
   I.click('[locatorlabel="Return to Home Recipe"]');
   I.waitForURL('http://localhost:3000/recipeFinder', 5);
+});
+
+Scenario('Verify search functionality - No Errors', ({ I }) => {
+  I.amOnPage('http://localhost:3000/recipeFinder');
+  I.waitForElement('#searchInput', 10);
+  I.fillField('#searchInput', 'Sushi');
+  I.pressKey('Enter');
+  I.waitForText('Lay a nori sheet on the mat, shiny-side down', 10);
+});
+
+Scenario('Verify search functionality - Errors', ({ I }) => {
+  I.amOnPage('http://localhost:3000/recipeFinder');
+  I.waitForElement('.search', 10);
+  I.fillField('.search', 'Sushi');
+  I.pressKey('Enter');
+  I.waitForText('Lay a nori sheet on the mat, shiny-side down', 10);
 });

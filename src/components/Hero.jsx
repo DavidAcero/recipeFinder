@@ -13,7 +13,7 @@ const Hero = () => {
   return (
     <div id='hero'>
         <form id="myform" onSubmit={handleSubmit}>
-            <input type="text" value={text} onChange={(e)=>setText(e.target.value)} placeholder='Search food by name...'/>
+            <input id="searchInput" type="text" value={text} onChange={(e)=>setText(e.target.value)} placeholder='Search food by name...'/>
             <button><i className="ri-search-line"></i></button>
         </form>
     </div>

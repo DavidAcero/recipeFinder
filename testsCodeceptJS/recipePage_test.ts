@@ -1,6 +1,6 @@
 const { I } = inject();
 
-Feature('Recipe Card');
+Feature('Recipe Page Tests');
 
 Scenario('Verify recipe card details', ({ I }) => {
   I.amOnPage('http://localhost:3000/recipeFinder');

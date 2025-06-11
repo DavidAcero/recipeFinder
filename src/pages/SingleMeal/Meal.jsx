@@ -34,7 +34,7 @@ const Meal = () => {
     <section id='single-meal'>
       {meal.strMeal ? ( // Check if meal data exists
         <>
-          <h2>{meal.strMeal}</h2>
+          <h2 cy='mealTitle'>{meal.strMeal}</h2>
 
           <div className="container">
             <div className="video-container">
